@@ -1,0 +1,99 @@
+
+<!------------------------------------------Pour le cas du temps du travail-------------------------------------->
+
+<div class="container custom-form-container mat-elevation-z2">
+
+  <!--  <mat-form-field>-->
+  <!--    <mat-label>Filter</mat-label>-->
+  <!--    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>-->
+  <!--  </mat-form-field>-->
+
+
+  <h1 class="title">Les Temps du travail</h1>
+  <div class="container custom-form-table-container">
+
+    <table mat-table [dataSource]="data"
+           matSort matSortActive="dateDebut"
+           matSortDisableClear
+           matSortDirection="desc">
+
+
+      <!-- Date du Debut Column -->
+      <ng-container matColumnDef="dateDebut">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Debut </th>
+        <td mat-cell *matCellDef="let element"> {{element.dateDebut.toString().slice(0, 19).replace('T', '  ')}} </td>
+      </ng-container>
+
+<!--      &lt;!&ndash; Date de fin Column &ndash;&gt;-->
+<!--      <div *ngIf="((startState | async) && !(finishState | async))">-->
+<!--        <ng-container matColumnDef="dateFin">-->
+<!--          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Fin </th>-->
+<!--          <td mat-cell *matCellDef="let element">-->
+<!--            En cours-->
+<!--          </td>-->
+<!--        </ng-container>-->
+<!--      </div>-->
+
+<!--      <div *ngIf="(startState | async) && (finishState | async)">-->
+<!--        <ng-container matColumnDef="dateFin">-->
+<!--          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Fin </th>-->
+<!--          <td mat-cell *matCellDef="let element">-->
+<!--            {{element.dateFin.toString().slice(0, 19).replace('T', '  ')}}-->
+<!--          </td>-->
+<!--        </ng-container>-->
+<!--      </div>-->
+
+
+        <ng-container matColumnDef="dateFin">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Fin </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.dateFin}}
+          </td>
+        </ng-container>
+
+
+
+
+
+<!--      &lt;!&ndash; Chambres Column &ndash;&gt;-->
+<!--      <ng-container matColumnDef="Total Travail">-->
+<!--        <th mat-header-cell *matHeaderCellDef> Total Travail </th>-->
+<!--        <td mat-cell *matCellDef="let element"> {{totalTravail}} </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Lits Column &ndash;&gt;-->
+<!--      <ng-container matColumnDef="Total pause">-->
+<!--        <th mat-header-cell *matHeaderCellDef> Total pause </th>-->
+<!--        <td mat-cell *matCellDef="let element"> {{totalPause}} </td>-->
+<!--      </ng-container>-->
+
+
+<!--      &lt;!&ndash; Salles de Bain Column &ndash;&gt;-->
+<!--      <ng-container matColumnDef="Heures Supplementaires">-->
+<!--        <th mat-header-cell *matHeaderCellDef> Heures Supplementaires </th>-->
+<!--        <td mat-cell *matCellDef="let element"> {{supplementaires}} </td>-->
+<!--      </ng-container>-->
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+
+    </table>
+
+  </div>
+
+  <mat-paginator #paginator
+                 [length]="length">
+  </mat-paginator>
+
+
+</div>
+
+
+<!---------------------------------Pour le cas de la pause------------------------------->
+
+
+
+
+<app-pause></app-pause>

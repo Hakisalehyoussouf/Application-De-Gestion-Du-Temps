@@ -1,0 +1,63 @@
+.home-add-button {
+  display: none !important;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+/* for medium screens */
+@media (min-width: 768px) {
+  .home-add-button {
+    display: block !important;
+  }
+}
+
+.home-add-button:hover{
+  background-color: #f0f0f0;
+}
+
+.profil-section{
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #e0e0e0;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.75rem;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.profil-section:hover{
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+
+.profil-options {
+  position: absolute;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  overflow: hidden;
+  right: 0;
+  top: 3rem;
+  font-size: 0.875rem;
+  /*z-index: 9999;*/
+  z-index: 1;
+}
+
+/* for medium screens */
+@media (min-width: 768px) {
+  .profil-options {
+    width: 75%;
+  }
+}
+
+
+.profil-opt{
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}

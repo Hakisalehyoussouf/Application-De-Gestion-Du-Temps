@@ -1,0 +1,32 @@
+<div class="position-relative">
+
+  <div class="d-flex flex-row align-items-center gap-3">
+
+    <div (click)="toggleOpen()" class="profil-section" >
+      <i class="fa-solid fa-bars"></i>
+      <div class="d-none d-md-block">
+        <app-avatar></app-avatar>
+        {{ appSatateService.authState.email }}
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div *ngIf="(userMenuToggleSer.isOpen$ | async)"  class="profil-options">
+    <div class="profil-opt">
+
+      <app-menu-item *ngIf="appSatateService.authState.isAuthenticated" (click)="tempsTravailButtonHandle()">
+        Temps du travail
+      </app-menu-item>
+      <app-menu-item *ngIf="appSatateService.authState.isAuthenticated" (click)="logoutButtonHandle()">
+        Logout
+      </app-menu-item>
+
+    </div>
+  </div>
+
+</div>
+
+

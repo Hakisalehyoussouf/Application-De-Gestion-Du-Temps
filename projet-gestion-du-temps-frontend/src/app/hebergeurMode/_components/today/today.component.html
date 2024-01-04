@@ -1,0 +1,48 @@
+<div class="today">
+
+  <div class="top">
+    <h1 class="title">La journee d'aujourd'hui</h1>
+  </div>
+
+  <div class="bottom">
+
+    <div class="pourcentageChart">
+      <!--      <CircularProgressbar value={70} text={"70%"} strokeWidth={5} />-->
+      <div class="progress-container">
+        <mat-progress-spinner class="progress-spinner" mode="determinate" [value]="70"></mat-progress-spinner>
+        <span class="progress-text">70%</span>
+      </div>
+    </div>
+
+    <p class="title">Total Heures</p>
+    <p class="amount">5.5</p>
+    <p class="desc">
+      Quelques statistiques pour la journée d'aujourd'hui.
+    </p>
+
+    <div class="summary">
+      <div class="item">
+        <div class="itemTitle">Heures Travail</div>
+        <div class="itemResult positive">
+          <div class="resultAmount">5</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="itemTitle">Heures Pauses</div>
+        <div class="itemResult negative">
+          <div class="resultAmount">0.5</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="itemTitle">Heures Supplementaires</div>
+        <div class="itemResult positive">
+          <div class="resultAmount">0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

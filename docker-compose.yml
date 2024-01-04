@@ -1,0 +1,28 @@
+version: '3'
+services:
+  admin-front:
+    image: admin-front-image
+    ports:
+      - "4200:4200"
+
+  employee-front:
+    image: employee-front-image
+    ports:
+      - "4201:4200"
+
+  back:
+    image: back-image
+    ports:
+      - "8083:8080"
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql:latest
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
+      MYSQL_DATABASE: tempstravail_db
+      MYSQL_ROOT_PASSWORD: 
+    ports:
+      - "3306:3306"

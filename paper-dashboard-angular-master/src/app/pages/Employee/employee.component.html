@@ -1,0 +1,139 @@
+<style>
+  .col-md-8 {
+    min-width: 800px; /* Ou toute autre valeur que vous jugerez appropriée */
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+
+</style>
+<div class="col-md-8">
+  <div class="card card-user">
+    <div class="card-header">
+      <h5 class="card-title">Ajouter un employé</h5>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="row">
+          <div class="col-md-6 pr-1">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" placeholder="Email" [(ngModel)]="employee.email">
+            </div>
+          </div>
+          <div class="col-md-6 pl-1">
+            <div class="form-group">
+              <label>Nom</label>
+              <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="employee.nom">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 pr-1">
+            <div class="form-group">
+              <label>Prénom</label>
+              <input type="text" class="form-control" placeholder="Prénom" [(ngModel)]="employee.prenom">
+            </div>
+          </div>
+          <div class="col-md-6 pl-1">
+            <div class="form-group">
+              <label>Mot de passe</label>
+              <input type="password" class="form-control" placeholder="Mot de passe" [(ngModel)]="employee.password">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="update ml-auto mr-auto">
+            <button (click)="onSubmit()" class="btn btn-primary btn-round">Ajouter l'employé</button>
+<!--            <button type="submit" class="btn btn-primary">{{ editMode ? 'Modifier l’employé' : 'Ajouter l’employé' }}</button>-->
+
+          </div>
+          <p>{{ message }}</p>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<br><br>
+
+<div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Liste des employés</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Email</th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let emp of employees">
+                <td>{{ emp.nom }}</td>
+                <td>{{ emp.prenom }}</td>
+                <td>{{ emp.email }}</td>
+                <td>
+<!--                <td>-->
+<!--                  <button class="btn btn-primary" (click)="loadEmployeeById(emp.id)">Modifier</button>-->
+<!--                </td>-->
+                <td>
+                  <button class="btn btn-danger" (click)="deleteEmployee(emp.id)">Supprimer</button>
+                </td>
+
+                <td>
+                  <a #genererRapport
+                     id="genererRapport"
+                     data-bs-target="#rapport"
+                     data-bs-toggle="modal"
+                     class="btn btn-primary"
+                    (click)="GenererRapport(emp.id, emp.nom, emp.prenom)">
+                    Voir le Rapport
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--Le commencement du travail-->
+<div class="modal fade" id="rapport" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rapportTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="rapportTitle">Rapport Hebdomadaire</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Nom Complet : {{nomComplet}}
+        <br>
+        <hr>
+        Heures Travallé : {{ heuresTravail }}
+        <br>
+        <hr>
+        Heures Supplementaires : {{ heuresSupplementaires }}
+        <br>
+        <hr>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

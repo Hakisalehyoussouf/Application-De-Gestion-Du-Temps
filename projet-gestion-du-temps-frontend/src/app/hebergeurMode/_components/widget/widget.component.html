@@ -1,0 +1,95 @@
+<div class="widget">
+  <div class="left" *ngIf ="type === 'heuresTravail'">
+    <!--    left-->
+    <span class="title">{{ data.title }}</span>
+    <!--    <span class="counter" *ngIf="data.isMoney"> {{ dashboardSer.nbreAnnonce$ | async }} {{ 'fcfa' }}</span>-->
+    <span class="counter" > 580 </span>
+    <span class="link">{{ data.link }}</span>
+  </div>
+
+  <div class="left" *ngIf ="type === 'heuresPause'">
+    <!--    left-->
+    <span class="title">{{ data.title }}</span>
+    <!--    <span class="counter" *ngIf="data.isMoney"> {{ dashboardSer.nbreReservation$ | async }} {{ 'fcfa' }}</span>-->
+    <span class="counter" > 76 </span>
+    <span class="link">{{ data.link }}</span>
+  </div>
+
+  <div class="left" *ngIf ="type === 'heureSupplementaires'">
+    <!--    left-->
+    <span class="title">{{ data.title }}</span>
+    <!--    <span class="counter" *ngIf="data.isMoney"> {{ dashboardSer.nbreReclamation$ | async }} {{ 'fcfa' }}</span>-->
+    <span class="counter" > 98  </span>
+    <span class="link">{{ data.link }}</span>
+  </div>
+
+  <div class="left" *ngIf ="type === 'joursAbsent'">
+    <!--    left-->
+    <span class="title">{{ data.title }}</span>
+    <!--    <span class="counter" *ngIf="data.isMoney"> {{ dashboardSer.nbreTransaction$ | async }} {{ 'fcfa' }}</span>-->
+    <span class="counter"> 8 </span>
+    <span class="link">{{ data.link }}</span>
+  </div>
+
+
+  <div class="right">
+    <!--    right-->
+    <div class="percentage positive" *ngIf="diff >= 0 ">
+      <!--      <mat-icon>keyboard_arrow_up</mat-icon>-->
+      <!--      {{ diff }} %-->
+    </div>
+
+    <div class="percentage negative" *ngIf="diff < 0 ">
+      <!--      <mat-icon>keyboard_arrow_down</mat-icon>-->
+      <!--      {{ diff }} %-->
+    </div>
+
+
+    <mat-icon class="icon"  *ngIf="type === 'reclamation'"
+              [ngStyle]="{
+        'color': 'crimson',
+        'background-color': 'rgba(255, 0, 0, 0.2)'
+      }"
+    >chat_bubble_outline_outlined</mat-icon>
+
+    <mat-icon class="icon" *ngIf="type === 'annonce'"
+              [ngStyle]="{
+        'background-color': 'rgba(218, 165, 32, 0.2)',
+        'color': 'goldenrod'
+      }"
+    >home</mat-icon>
+
+    <mat-icon class="icon" *ngIf="type === 'reservation'"
+              [ngStyle]="{
+        'background-color': 'rgba(0, 128, 0, 0.2)',
+        'color': 'green'
+      }"
+    >check_circle</mat-icon>
+
+    <mat-icon class="icon" *ngIf="type === 'transaction'"
+              [ngStyle]="{
+        'background-color': 'rgba(128, 0, 128, 0.2)',
+        'color': 'purple'
+      }"
+    >credit_card</mat-icon>
+
+  </div>
+</div>
+
+<!--<div class="home">-->
+<!--  <div class="widget">-->
+<!--    <div class="left">-->
+<!--      <span class="title">{{ userWidgetData.title }}</span>-->
+<!--      <span class="counter">{{ userWidgetData.isMoney ? '$ ' : '' }}{{ userWidgetData.amount }}</span>-->
+<!--      <span class="link">{{ userWidgetData.link }}</span>-->
+<!--    </div>-->
+<!--    <div class="right">-->
+<!--      <div class="percentage positive">-->
+<!--        <mat-icon>keyboard_arrow_up</mat-icon>-->
+<!--        {{ userWidgetData.diff }} %-->
+<!--      </div>-->
+<!--      <mat-icon>{{ userWidgetData.icon }}</mat-icon>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  &lt;!&ndash; Répétez le même modèle pour les autres widgets &ndash;&gt;-->
+<!--</div>-->

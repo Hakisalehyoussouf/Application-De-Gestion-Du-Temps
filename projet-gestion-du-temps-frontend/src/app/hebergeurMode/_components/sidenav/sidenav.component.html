@@ -1,0 +1,61 @@
+<div class="sidenav">
+
+  <div class="top justify-content-center align-content-center mt-2">
+    <!--    <a routerLink="/" (click)="switchToClientMode()" style="text-decoration: none;">-->
+    <a style="text-decoration: none;">
+      <span class="logo">
+<!--        <app-logo></app-logo>-->
+      </span>
+    </a>
+  </div>
+  <hr/>
+
+
+  <div class="center">
+    <ul>
+
+      <p class="title">PRINCIPAL</p>
+      <li *ngFor="let data of sideNavPrincpalData" >
+        <a style="text-decoration: none;" routerLink="{{data.route}}">
+          <mat-icon class="icon" >{{data.icon}}</mat-icon>
+          <span>{{data.title}}</span>
+        </a>
+      </li>
+
+      <p class="title">TEMPS DU TRAVAIL</p>
+      <li *ngFor="let data of sideNavTravailData" >
+        <a routerLink="{{data.route}}" style="text-decoration: none;">
+          <mat-icon class="icon">{{data.icon}}</mat-icon>
+          <span>{{data.title}}</span>
+        </a>
+      </li>
+
+
+<!--      <p class="title">UTILE</p>-->
+<!--      <li *ngFor="let data of sideNavUtileData" >-->
+<!--        <a routerLink="{{data.route}}" style="text-decoration: none;">-->
+<!--          <mat-icon class="icon">{{data.icon}}</mat-icon>-->
+<!--          <span>{{data.title}}</span>-->
+<!--        </a>-->
+<!--      </li>-->
+
+
+      <p class="title">UTILISATEUR</p>
+      <li>
+        <a (click)="logoutHandle()" style="text-decoration: none;">
+          <mat-icon class="icon">exit_to_app</mat-icon>
+          <span>Déconnexion</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+
+
+  <!--  <div class="bottom">-->
+  <!--    <div class="colorOption" (click)="dispatch({ type: 'LIGHT' })"></div>-->
+  <!--    <div class="colorOption" (click)="dispatch({ type: 'DARK' })"></div>-->
+  <!--  </div>-->
+
+</div>

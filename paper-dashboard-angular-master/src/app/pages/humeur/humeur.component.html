@@ -1,0 +1,31 @@
+<div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Humeurs des employés</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+              <!-- Uncomment these to show them -->
+              <!-- <th>ID</th> -->
+              <th>Date de l'Humeur</th>
+              <th>Humeur</th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let humeur of humeurs">
+                <!-- Uncomment these to show them -->
+                <!-- <td>{{ humeur.id }}</td> -->
+                <td>{{ humeur.date | date:'short' }}</td>
+                <td>{{ humeur.humeur }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

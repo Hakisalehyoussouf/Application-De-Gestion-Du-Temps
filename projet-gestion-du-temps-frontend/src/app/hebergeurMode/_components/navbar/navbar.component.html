@@ -1,0 +1,193 @@
+<!-- navbar.component.html -->
+<div class="navbar">
+  <div class="wrapper">
+
+    <div class="search">
+
+    </div>
+
+    <div class="items">
+
+      <!--S'il a fini le travail d'abord et n'a pas ajoute son humeur le cas de finishHumeurState (j'attends adnan??????????)?????????-->
+      <div *ngIf="(startState | async) && (finishState | async) && !(finishHumeurState | async)"  class="item">
+        <a #ajoutHumeur
+           id="ajoutHumeur"
+           data-bs-target="#humeur"
+           data-bs-toggle="modal"
+           class="btn ajout-button d-none d-md-block rounded-3 py-1 px-2"
+           (click)="initModal()">
+            Ajouter Humeur
+        </a>
+      </div>
+
+      <!--Conditon sur son etat du travail??????????-->
+      <div *ngIf="!(startState | async)"  class="item">
+        <a #commencerTravail
+          id="commencerTravail"
+          data-bs-target="#commencer"
+          data-bs-toggle="modal"
+          class="btn commencer-button d-none d-md-block rounded-3 py-1 px-2"
+          (click)="CommencerTravailHandle()" >
+          Commencer Le travail
+        </a>
+      </div>
+
+      <!--Conditon sur son etat du travail??????????-->
+      <div  *ngIf="((startState | async) && !(finishState | async) && !(startBreakState | async))"   class="item">
+        <a #finirTravail
+           id="finirTravail"
+           data-bs-target="#finir"
+           data-bs-toggle="modal"
+           class="btn finir-button d-none d-md-block rounded-3 py-1 px-2"
+          (click)="FinirTravailHandle()">
+          Finir Le travail
+        </a>
+      </div>
+
+
+      <!--Conditon sur son etat du travail??????????-->
+      <div *ngIf="(!(startBreakState | async) && !(finishState | async) && (startState | async))"  class="item">
+        <a #commencerTravail
+           id="commencerRepos"
+           data-bs-target="#reposer"
+           data-bs-toggle="modal"
+           class="btn reposer-button d-none d-md-block rounded-3 py-1 px-2"
+           (click)="CommencerReposHandle()" >
+          Se Reposer
+        </a>
+      </div>
+
+      <!--Conditon sur son etat du travail??????????-->
+      <div  *ngIf="((startBreakState | async) && !(finishBreakState | async))"   class="item">
+        <a #finirTravail
+           id="finirRepos"
+           data-bs-target="#reprendre"
+           data-bs-toggle="modal"
+           class="btn reprendre-button d-none d-md-block rounded-3 py-1 px-2"
+           (click)="FinirReposHandle()">
+          Reprendre
+        </a>
+      </div>
+
+      <div class="item">
+        <app-user-menu></app-user-menu>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--Le commencement du travail-->
+<div class="modal fade" id="commencer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="commencerTravailTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="commencerTravailTitle">Debut du travail</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Voulez-vous debuter votre travail ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" (click)="confirmerCommencerTravail()" class="btn btn-primary" data-bs-dismiss="modal">Confirmer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--La fin du travail-->
+<div class="modal fade" id="finir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="finirTravailTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="finirTravailTitle">Fin du travail</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Avez-vous fini votre travail ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" (click)="confirmerFinirTravail()" class="btn btn-primary" data-bs-dismiss="modal">Confirmer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!--Le commencement du repos-->
+<div class="modal fade" id="reposer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="commencerReposTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="commencerReposTitle">Le Repos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Voulez-vous reposer ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" (click)="confirmerCommencerRepos()" class="btn btn-primary" data-bs-dismiss="modal">Confirmer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--La fin du repos-->
+<div class="modal fade" id="reprendre" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="finirReposTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="finirReposTitle">Reprise du Travail</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Voulez-vous  Reprendre le Travail?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" (click)="confirmerFinirRepos()" class="btn btn-primary" data-bs-dismiss="modal">Confirmer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--La fin du repos-->
+<div class="modal fade" id="humeur" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="humeurTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="humeurTitle">Votre Humeur de la journee</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <app-humeur-input></app-humeur-input>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" (click)="soumettreHumeur()" class="btn btn-primary" data-bs-dismiss="modal">Soumettre</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
